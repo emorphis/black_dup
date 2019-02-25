@@ -467,11 +467,12 @@ def reformat_one(
                 changed = Changed.YES
         else:
             cache: Cache = {}
-            if write_back != WriteBack.DIFF:
-                cache = read_cache(mode)
-                res_src = src.resolve()
-                if res_src in cache and cache[res_src] == get_cache_info(res_src):
-                    changed = Changed.CACHED
+            # NB: remove cache for Quora interview codebase
+            # if write_back != WriteBack.DIFF:
+            #     cache = read_cache(mode)
+            #     res_src = src.resolve()
+            #     if res_src in cache and cache[res_src] == get_cache_info(res_src):
+            #         changed = Changed.CACHED
             if changed is not Changed.CACHED and format_file_in_place(
                 src, fast=fast, write_back=write_back, mode=mode
             ):
