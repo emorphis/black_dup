@@ -484,6 +484,7 @@ def reformat_one(
         report.done(src, changed)
     except Exception as exc:
         report.failed(src, str(exc))
+        raise exc
 
 
 async def schedule_formatting(
